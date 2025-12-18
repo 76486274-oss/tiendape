@@ -1,0 +1,49 @@
+†††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††
+†                                                           †
+†               PUCHOSSS.PE - VINTAGE SYSTEM                †
+†                      VERSION 2.0                          †
+†                                                           †
+†††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††
+
+[ DESCRIPCIÓN ]
+Este es el código fuente oficial de la landing page de PUCHOSSS.PE. 
+Un sistema web diseñado bajo la estética Y2K, Emo y Cyberpunk 
+para la venta de ropa custom, vintage y SK8 en Lima, Perú.
+
+[ ESTRUCTURA DEL PROYECTO ]
+/ (Carpeta Raíz)
+│
+├── index.html        <-- Código fuente (HTML, CSS y JS)
+└── img/              <-- CARPETA CRÍTICA (Aquí van todas tus fotos)
+    ├── polocalavera.png
+    ├── SHORTMUJER.png
+    ├── CAMISA.PNG.jpeg
+    ├── CASACA.PNG.jpeg
+    └── ... (resto de fotos)
+
+[ CARACTERÍSTICAS TÉCNICAS ]
+1.  SISTEMA DE IMÁGENES BLINDADO: El CSS obliga a todas las 
+    imágenes a medir 350px de alto con 'object-fit: cover', 
+    evitando que el diseño se rompa sin importar el tamaño original.
+2.  INTERFAZ DE VENTANAS: Navegación tipo aplicación (SPA) 
+    gestionada por JavaScript.
+3.  TEXT SCRAMBLE: Efecto visual de desencriptación en el logo.
+4.  CUSTOM CURSOR: Puntero neón reactivo para experiencia inmersiva.
+5.  FORMSPREE INTEGRATION: Captura de pedidos directa al correo institucional.
+
+[ INSTRUCCIONES DE DESPLIEGUE ]
+1. Asegúrate de que todas las imágenes estén dentro de la carpeta /img.
+2. Abre index.html y busca la línea del <form>.
+3. Reemplaza 'tu_codigo' por tu ID de Formspree para recibir correos.
+4. Para subirlo a GitHub Pages, solo sube el index.html y la carpeta /img.
+
+[ CONTACTO DEL DESARROLLADOR ]
+† Owner: Jesús Aaron
+† Instagram: https://www.instagram.com/puchosss.pe/
+† WhatsApp: +51 972 091 534
+† GitHub: https://github.com/76486274-oss
+† Email: 76486274@iestapsm.edu.pe
+
+†††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††
+†               SYSTEM STATUS: OPERATIONAL                  †
+†††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††

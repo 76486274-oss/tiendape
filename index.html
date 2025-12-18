@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>† PUCHOSSS.PE † | Y2K VINTAGE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CONFIGURACIÓN Y2K / EMO / CYBER --- */
+        :root {
+            --bg: #000000;
+            --text: #e0e0e0;
+            --neon-cyan: #00fff2;
+            --neon-pink: #ff00ff;
+            --font-cyber: 'Orbitron', sans-serif;
+            --font-retro: 'VT323', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Cursor personalizado activo */
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-retro);
+            overflow-x: hidden;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        /* --- INNOVACIÓN: CURSOR CYBERPUNK --- */
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        #cursor-dot {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Scanlines - Efecto TV */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,255,242,0.03) 3px);
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        header {
+            border-bottom: 2px solid var(--neon-cyan);
+            padding: 15px 20px;
+            background: rgba(5, 5, 5, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo-box {
+            font-family: var(--font-cyber);
+            font-size: 1.4rem;
+            text-shadow: 2px 2px var(--neon-pink);
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links button {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--text);
+            font-family: var(--font-cyber);
+            cursor: none;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .nav-links button:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
+        .nav-links button.active { border: 1px solid var(--neon-cyan); color: var(--neon-cyan); box-shadow: inset 0 0 10px var(--neon-cyan); }
+
+        /* --- BOTÓN WHATSAPP FLOTANTE --- */
+        .wa-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: black;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: var(--font-cyber);
+            font-weight: 900;
+            text-decoration: none;
+            z-index: 2000;
+            font-size: 0.8rem;
+            box-shadow: 5px 5px 0px #fff;
+            transition: 0.2s;
+        }
+        .wa-float:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px var(--neon-cyan); }
+
+        /* --- VENTANAS --- */
+        .page {
+            display: none; 
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: glitch-in 0.3s ease-out;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes glitch-in {
+            0% { opacity: 0; transform: skewX(-20deg); }
+            50% { opacity: 0.5; transform: skewX(20deg); }
+            100% { opacity: 1; transform: skewX(0); }
+        }
+
+        /* --- SECCIÓN HOME --- */
+        .hero { 
+            text-align: center; 
+            border: 2px solid var(--neon-cyan); 
+            padding: 60px 20px; 
+            background: #080808;
+            position: relative;
+        }
+        
+        .glitch-title { 
+            font-family: var(--font-cyber); 
+            font-size: 3.5rem; 
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: var(--font-cyber);
+            font-size: 0.7rem;
+            border: 1px solid var(--text);
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--text);
+            color: #000;
+            box-shadow: 0 0 15px var(--text);
+        }
+
+        /* --- GRID DE PRODUCTOS (BLINDADO) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+
+        .card {
+            border: 2px solid var(--text);
+            background: #050505;
+            overflow: hidden; 
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-5px);
+        }
+
+        /* CONTROL DE IMÁGENES: No se salen ni se deforman */
+        .card img {
+            width: 100%;
+            height: 350px;        
+            object-fit: cover;    
+            object-position: center;
+            border-bottom: 2px solid var(--text);
+            filter: grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+        .card-info { padding: 20px; text-align: center; background: #000; }
+        .card h3 { font-family: var(--font-cyber); font-size: 0.85rem; margin-bottom: 10px; color: var(--neon-cyan); letter-spacing: 1px; }
+        .price { font-size: 1.6rem; font-weight: bold; color: var(--neon-pink); }
+
+        /* --- FORMULARIO PROTOCOLO --- */
+        .terminal-form {
+            border: 2px solid var(--neon-cyan);
+            padding: 30px;
+            background: #000;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 10px 10px 0px var(--neon-cyan);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0 25px 0;
+            background: #0a0a0a;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: var(--font-retro);
+            font-size: 1.2rem;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 20px;
+            background: var(--neon-cyan);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            font-family: var(--font-cyber);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .btn-send:hover { background: var(--neon-pink); box-shadow: 0 0 20px var(--neon-pink); }
+
+        @media (max-width: 600px) {
+            .glitch-title { font-size: 2rem; }
+            * { cursor: auto; } /* Desactivar cursor en móvil */
+            #custom-cursor, #cursor-dot { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <div class="scanlines"></div>
+
+    <a href="https://wa.me/51972091534" class="wa-float" target="_blank">† WHATSAPP DIRECT †</a>
+
+    <header>
+        <nav>
+            <div class="logo-box" id="scramble-logo">† PUCHOSSS.PE †</div>
+            <div class="nav-links">
+                <button onclick="showPage('home')" id="btn-home" class="active">INICIO</button>
+                <button onclick="showPage('drop')" id="btn-drop">CATALOGO</button>
+                <button onclick="showPage('pedido')" id="btn-pedido">PEDIDO</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="home" class="page active">
+        <section class="hero">
+            <h1 class="glitch-title">PUCHOSSS.PE</h1>
+            <p style="color: var(--neon-cyan); letter-spacing: 4px;">CUSTOM & VINTAGE CLOTHING SYSTEM</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/puchosss.pe/" target="_blank">† INSTAGRAM †</a>
+                <a href="https://github.com/76486274-oss?tab=repositories" target="_blank">† GITHUB †</a>
+                <a href="mailto:76486274@iestapsm.edu.pe">† GMAIL †</a>
+            </div>
+
+            <hr style="border: 1px dashed var(--neon-pink); margin: 40px 0;">
+            
+            <div style="font-size: 1rem; text-align: left; display: inline-block;">
+                <p>> Location: Lima, PE</p>
+                <p>> Delivery: Tren Eléctrico / Shalom</p>
+                <p>> Status: Online</p>
+            </div>
+            <br><br>
+            <button onclick="showPage('drop')" class="btn-send" style="width: auto; padding: 15px 50px;">INGRESAR AL DROP</button>
+        </section>
+    </main>
+
+    <main id="drop" class="page">
+        <h2 style="text-align: center; color: var(--neon-pink); font-family: var(--font-cyber); margin-bottom: 30px;">† STOCK DISPONIBLE †</h2>
+        <div class="product-grid">
+            
+            <div class="card">
+                <img src="img/polocalavera.png" alt="Polo Calavera">
+                <div class="card-info">
+                    <h3>† POLO CALAVERA Y2K †</h3>
+                    <p>XXL | 10/10</p>
+                    <p class="price">S/ 60.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/SHORTMUJER.png" alt="Short Mujer">
+                <div class="card-info">
+                    <h3>† SHORT CUSTOM †</h3>
+                    <p>XXL | 7/10</p>
+                    <p class="price">S/ 25.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/CAMISA.PNG.jpeg" alt="Camisa">
+                <div class="card-info">
+                    <h3>† CAMISA CUSTOM †</h3>
+                    <p class="price">S/ 40.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/CASACA.PNG.jpeg" alt="Casaca">
+                <div class="card-info">
+                    <h3>† CASACA Y2K †</h3>
+                    <p class="price">S/ 50.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/CASACAMINECRAFT.PNG.jpeg" alt="Casaca Minecraft">
+                <div class="card-info">
+                    <h3>† CASACA MINECRAFT †</h3>
+                    <p class="price">S/ 80.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/polo tapout.jpeg" alt="Polo Tapout">
+                <div class="card-info">
+                    <h3>† POLO TAPOUT †</h3>
+                    <p class="price">S/ 40.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/polocuztom.jpeg" alt="Polo Custom">
+                <div class="card-info">
+                    <h3>† POLO CUZTOM †</h3>
+                    <p class="price">S/ 40.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/polos8k.jpeg" alt="Polo S8K">
+                <div class="card-info">
+                    <h3>† POLO S8K †</h3>
+                    <p class="price">S/ 50.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/polos8kmorado.jpeg" alt="Polo S8K Morado">
+                <div class="card-info">
+                    <h3>† POLO S8K MORADO †</h3>
+                    <p class="price">S/ 50.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/polotapoutazul.jpeg" alt="Polo Tapout Azul">
+                <div class="card-info">
+                    <h3>† POLO TAPOUT AZUL †</h3>
+                    <p class="price">S/ 40.00</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/casaca s8k verde.jpeg" alt="Casaca Verde">
+                <div class="card-info">
+                    <h3>† CASACA S8K VERDE †</h3>
+                    <p class="price">S/ 60.00</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <main id="pedido" class="page">
+        <div class="terminal-form">
+            <h2 style="color: var(--neon-cyan); text-align: center; font-family: var(--font-cyber); margin-bottom: 20px;">† INICIAR PROTOCOLO DE COMPRA †</h2>
+            
+            <form action="https://formspree.io/f/tu_codigo" method="POST">
+                <label>> EMAIL_ID:</label>
+                <input type="email" name="email" placeholder="usuario@gmail.com" required>
+                
+                <label>> IG_USER:</label>
+                <input type="text" name="ig" placeholder="@puchosss.pe" required>
+
+                <label>> WHATSAPP_NUM:</label>
+                <input type="tel" name="whatsapp" placeholder="+51" required>
+
+                <label>> NAME:</label>
+                <input type="text" name="prenda" placeholder="Ej: Casaca Minecraft" required>
+
+                <label>> QUE NECESITAS:</label>
+                <textarea name="info" rows="3" placeholder="Estación de tren o Ciudad"></textarea>
+
+                <button type="submit" class="btn-send">ENVIAR PETICIÓN AL SISTEMA</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        /* INNOVACIÓN JS 1: CURSOR PERSONALIZADO */
+        const cursor = document.getElementById('custom-cursor');
+        const dot = document.getElementById('cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+        });
+
+        /* INNOVACIÓN JS 2: SCRAMBLE TEXT EFFECT */
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                            this.queue[i].char = char;
+                        }
+                        output += `<span style="color:var(--neon-pink)">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+        }
+
+        const el = document.getElementById('scramble-logo');
+        const fx = new TextScramble(el);
+        const phrases = ['† PUCHOSSS.PE †', '† VINTAGE SYSTEM †', '† EMO STYLE †'];
+        let counter = 0;
+        const next = () => {
+            fx.setText(phrases[counter]).then(() => {
+                setTimeout(next, 3000);
+            });
+            counter = (counter + 1) % phrases.length;
+        };
+        next();
+
+        /* LÓGICA DE VENTANAS */
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('btn-' + pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
